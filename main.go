@@ -73,19 +73,16 @@ func streamHandler(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 			}
-
 			fmt.Println("End of Stream!")
 			fmt.Println("Port Closed!")
 		}
 	}
-
 	fmt.Println("leaving function")
 }
 
 //returns the stream reciving page
 func streamPage(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "serv/streamPage.html")
-
 }
 
 //list all open serial ports
@@ -94,7 +91,6 @@ func listHandler(w http.ResponseWriter, r *http.Request) {
 	data, _ := ScanPorts()
 	if len(data) != 0 {
 		for _, v := range (data) {
-
 			fmt.Fprintf(w, "<p><a href='/streamPage/")
 			fmt.Fprintf(w, v)
 			fmt.Fprintf(w, "'>"+v+"</a></p>")
@@ -111,15 +107,12 @@ func pageHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(r.URL.Path)
 	}
 	if (r.URL.Path == "/") {
-
 		//http.ServeFile(w, r, "serv/index.html")
 		//if not page list all devices
 		listHandler(w, r)
 	} else {
 		http.ServeFile(w, r, "/serv"+r.URL.Path)
-
 	}
-
 	fmt.Fprintf(w, r.URL.Path[1:])
 }
 
