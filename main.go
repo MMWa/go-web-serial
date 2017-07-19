@@ -100,7 +100,7 @@ func listHandler(w http.ResponseWriter, r *http.Request) {
 			fmt.Fprintf(w, "'>"+v+"</a></p>")
 		}
 	} else {
-		fmt.Fprintf(w, "No devices connected")
+		fmt.Fprintf(w, "<p>No devices connected</p></br>")
 	}
 	fmt.Fprintf(w, "<p><a href='/shutdown'>Shutdown</a></p>")
 }
