@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+<h1>Getting server updates</h1>
+<p id="result"></p>
+
+<script>
+    addressLink = window.location.href
+    addressArray = addressLink.split("/")
+
+    var resultHolder = document.querySelector("#result")
+    var eventSrc = new EventSource('../stream/' + addressArray[4]);
+
+    eventSrc.onmessage = function (e) {
+        resultHolder.innerHTML += e.data + "</br>"
+        window.scrollTo(0, document.body.scrollHeight);
+
+    }
+
+
+</script>
+
+</body>
+</html>
